@@ -1,2 +1,0 @@
-com.Company.Musvi.resources
-int xml nfc_tech_filter 0x7f190001

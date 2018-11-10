@@ -30,13 +30,12 @@ using System.Collections.Generic;
 public class ApiAiModule : MonoBehaviour
 {
 
-    public Text answerTextField;
-    public Text inputTextField;
     public Text text;
+    public Text TextDialog;
     private ApiAiUnity apiAiUnity;
     private AudioSource aud;
     public AudioClip listeningSound;
-    private TextToSpeech tts;
+    private TextToSpeech text_to_speech;
 
     private readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings
     {
@@ -67,10 +66,12 @@ public class ApiAiModule : MonoBehaviour
         apiAiUnity = new ApiAiUnity();
         apiAiUnity.Initialize(config);
 
+        text_to_speech = GetComponent<TextToSpeech>();
+
         apiAiUnity.OnError += HandleOnError;
         apiAiUnity.OnResult += HandleOnResult;
 
-	      tts = new TextToSpeech(TextToSpeech.Locale.ES);
+
 
     }
 
@@ -81,16 +82,11 @@ public class ApiAiModule : MonoBehaviour
             if (aiResponse != null)
             {
                 Debug.Log(aiResponse.Result.ResolvedQuery);
-                text.GetComponent<Text>().text = "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF\nAAAAAAACCC\nAB\n";
+
                 var outText = JsonConvert.SerializeObject(aiResponse, jsonSettings);
 
-                text.GetComponent<Text>().text = "HEYEBEHBHEBHEEBHEB";
+		            text_to_speech.Speak(outText);
 
-                text.GetComponent<Text>().text = outText;
-
-		            tts.Speak(outText);
-
-                answerTextField.text = outText;
 
             } else
             {
@@ -104,8 +100,7 @@ public class ApiAiModule : MonoBehaviour
         RunInMainThread(() => {
             Debug.LogException(e.Exception);
             Debug.Log(e.ToString());
-            answerTextField.text = e.Exception.Message;
-            tts.Speak(e.ToString());
+            text_to_speech.Speak(e.ToString());
         });
     }
 
@@ -137,32 +132,30 @@ public class ApiAiModule : MonoBehaviour
     public void StartListening()
     {
 
-        aud = GetComponent<AudioSource>();
-        apiAiUnity.StartListening(aud);
+      Debug.Log("StartListening");
+
+      aud = GetComponent<AudioSource>();
+      apiAiUnity.StartListening(aud);
 
     }
 
     public void StopListening()
     {
-        try
-        {
-            Debug.Log("StopListening");
+      try
+      {
+          Debug.Log("StopListening");
 
-            if (answerTextField != null)
-            {
-                answerTextField.text = "";
-            }
-
-            apiAiUnity.StopListening();
-        } catch (Exception ex)
-        {
-            Debug.LogException(ex);
-        }
+          apiAiUnity.StopListening();
+      } catch (Exception ex)
+      {
+          Debug.LogException(ex);
+      }
     }
 
     public void SendText()
     {
-        var text = inputTextField.text;
+        //var text = inputTextField.text;
+        var text = "Hola";
 
         Debug.Log(text);
 
@@ -172,13 +165,18 @@ public class ApiAiModule : MonoBehaviour
         {
             Debug.Log("Resolved query: " + response.Result.ResolvedQuery);
             var outText = JsonConvert.SerializeObject(response, jsonSettings);
+            //var str_res = JObject.Parse(outText);
+            //var answer = str_res["Id"].ToString();
+
+            text_to_speech.Speak(outText.ToString());
+            //TextDialog.text = outText;
 
             Debug.Log("Result: " + outText);
 
-            answerTextField.text = outText;
         } else
         {
             Debug.LogError("Response is null");
+            TextDialog.text = "Algo ha fallado";
         }
 
     }

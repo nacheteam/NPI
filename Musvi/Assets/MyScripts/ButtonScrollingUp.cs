@@ -31,9 +31,13 @@ public class ButtonScrollingUp : MonoBehaviour {
     bool listening;
     private ApiAiModule ai_module;
 
+    public TextToSpeech tts;
+
     // Use this for initialization
     void Start ()
     {
+        tts = GetComponent<TextToSpeech>();
+
         sum = 0;
         images = new List<Sprite>();
         texts = new List<string>();
@@ -52,7 +56,7 @@ public class ButtonScrollingUp : MonoBehaviour {
         actual_pos = 0;
         waiting = false;
         first = true;
-        ai_module = new ApiAiModule();
+        ai_module = GetComponent<ApiAiModule>();
         listening = false;
         InvokeRepeating("ExecuteAfterTime", 2, 2);
     }
@@ -75,6 +79,8 @@ public class ButtonScrollingUp : MonoBehaviour {
             }
             else if (hit.transform.name == "PreviousImage")
             {
+                //tts.Speak("Hola bro");
+                //ai_module.SendText();
                 sum = 2;
                 actual_pos-=sum;
                 if (actual_pos < -1)
@@ -91,17 +97,18 @@ public class ButtonScrollingUp : MonoBehaviour {
         // Update is called once per frame
     void Update(){
     if(Input.touchCount == 1){
-        if(Input.GetTouch(0).phase == TouchPhase.Began && !listening)
+      ai_module.SendText();
+        /*if(Input.GetTouch(0).phase == TouchPhase.Began && !listening)
         {
-            ai_module.StartNativeRecognition();
+
             listening = true;
-            text.GetComponent<Text>().text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            //text.GetComponent<Text>().text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         } else if (Input.GetTouch(0).phase == TouchPhase.Began && listening){
             listening = false;
             //ai_module.StopListening();
             //ai_module.SendText();
-            text.GetComponent<Text>().text = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-        }
+            //text.GetComponent<Text>().text = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+        }*/
     }
 
         Vector3 pos = cam.transform.position;
