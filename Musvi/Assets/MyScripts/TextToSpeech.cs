@@ -46,7 +46,7 @@ public class TextToSpeech :MonoBehaviour
         SetSpeed(this.Speed);
         SetPitch(this.Pitch);
     }
-    public void Speak(string toSay,OnErrorCallbackHandler callback)
+    public void Speak(string toSay,OnErrorCallbackHandler callback) //Llama a la API de Android para TTS
     {
         if (TTSExample == null)
         {
@@ -58,7 +58,7 @@ public class TextToSpeech :MonoBehaviour
         TTSExample.Call("TTSMEWithCallBack", toSay, gameObject.name, "OnError");
 
     }
-    public void OnError(string error)
+    public void OnError(string error) //Gestiona un error de TTS
     {
         if (_callback != null)
         {
@@ -79,7 +79,7 @@ public class TextToSpeech :MonoBehaviour
         TTSExample.Call("TTSME", toSay);
 
     }
-    public void SetLanguage(Locale lan)
+    public void SetLanguage(Locale lan) // Sirve para cambiar el idioma
     {
         this._lang = lan;
         string[] Language = new string[] {"UK","US" };
@@ -107,7 +107,7 @@ public class TextToSpeech :MonoBehaviour
         }
         TTSExample.Set<float>("Pitch", pitch);
     }
-    private void Initialize()
+    private void Initialize() //Se inizializa el TTS
     {
         if (TTSExample == null)
         {
