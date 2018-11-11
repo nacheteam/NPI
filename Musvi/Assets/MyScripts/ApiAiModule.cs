@@ -61,14 +61,14 @@ public class ApiAiModule : MonoBehaviour
             return true;
         };
 
-        const string ACCESS_TOKEN = "f5ac8103d7da44fbb15a512990ecd204";
+        const string ACCESS_TOKEN = "f5ac8103d7da44fbb15a512990ecd204"; // Identificador de DialogFlow
 
         var config = new AIConfiguration(ACCESS_TOKEN, SupportedLanguage.Spanish);
 
         apiAiUnity = new ApiAiUnity();
         apiAiUnity.Initialize(config);
 
-        text_to_speech = GetComponent<TextToSpeech>();
+        text_to_speech = GetComponent<TextToSpeech>(); // Se inicializa el TTS
 
         apiAiUnity.OnError += HandleOnError;
         apiAiUnity.OnResult += HandleOnResult;
@@ -77,7 +77,7 @@ public class ApiAiModule : MonoBehaviour
         SendText("Goya");
     }
 
-    void HandleOnResult(object sender, AIResponseEventArgs e)
+    void HandleOnResult(object sender, AIResponseEventArgs e) //Gestiona las llamadas correctas al bot de DialogFlow
     {
         RunInMainThread(() => {
             var aiResponse = e.Response;
@@ -87,7 +87,7 @@ public class ApiAiModule : MonoBehaviour
 
                 var outText = JsonConvert.SerializeObject(aiResponse, jsonSettings);
 
-		            text_to_speech.Speak(aiResponse.Result.Fulfillment.Speech);
+		            text_to_speech.Speak(aiResponse.Result.Fulfillment.Speech); //El TTS dicta la respuesta
 
 
             } else
@@ -154,7 +154,7 @@ public class ApiAiModule : MonoBehaviour
       }
     }
 
-    public void SendText(string text_)
+    public void SendText(string text_) // Sirve para enviar cadenas de texto al bot de DialogFlow
     {
         AIResponse response = apiAiUnity.TextRequest(text_);
 
@@ -162,14 +162,7 @@ public class ApiAiModule : MonoBehaviour
         {
             Debug.Log("Resolved query: " + response.Result.ResolvedQuery);
             var outText = JsonConvert.SerializeObject(response, jsonSettings);
-            //var str_res = JObject.Parse(response.Result.ResolvedQuery);
-            //var answer = str_res["result"]["resolvedQuery"].ToString();
 
-            //text_to_speech.Speak("La respuesta es: " + respons);
-
-            //TextDialog.text = outText;
-
-            //text_to_speech.Speak(response.Result.Fulfillment.Speech);
         } else
         {
             Debug.LogError("Response is null");
@@ -177,7 +170,7 @@ public class ApiAiModule : MonoBehaviour
 
     }
 
-    public void StartNativeRecognition()
+    public void StartNativeRecognition() // Sirve para activar el reconocimiento de voz de Android.
     {
         try
         {

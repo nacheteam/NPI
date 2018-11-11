@@ -31,7 +31,7 @@ using ApiAiSDK.Unity.Android;
 #endif
 
 namespace ApiAiSDK.Unity
-{	
+{
 	public class ApiAiUnity
 	{
 		private ApiAi apiAi;
@@ -71,7 +71,7 @@ namespace ApiAiSDK.Unity
 #endif
 
 		}
-			
+
 #if UNITY_ANDROID
 		private void InitializeAndroid(){
 			androidRecognizer = new AndroidRecognizer();
@@ -98,7 +98,7 @@ namespace ApiAiSDK.Unity
 				var recognitionResult = wrapper.GetResult();
 				androidResultWrapper = null;
 				androidRecognizer.Clean();
-				
+
 				if (recognitionResult.IsError) {
 					FireOnError(new Exception(recognitionResult.ErrorMessage));
 				} else {
@@ -106,7 +106,7 @@ namespace ApiAiSDK.Unity
 						Query = recognitionResult.RecognitionResults,
 						Confidence = recognitionResult.Confidence
 					};
-					
+
 					var aiResponse = apiAi.TextRequest(request);
 					ProcessResult(aiResponse);
 				}
@@ -126,7 +126,7 @@ namespace ApiAiSDK.Unity
 			}
 		}
 
-		public void StartNativeRecognition(){
+		public void StartNativeRecognition(){ // Esta funcion llama al soporte de voz de Google del tfno.
 			if (Application.platform != RuntimePlatform.Android) {
 				throw new InvalidOperationException("Now only Android supported");
 			}
@@ -143,7 +143,7 @@ namespace ApiAiSDK.Unity
 			if (recordingActive) {
 
 				float[] samples = null;
-	
+
 				lock (thisLock) {
 					if (recordingActive) {
 						StopRecording();
@@ -162,7 +162,7 @@ namespace ApiAiSDK.Unity
             if (samples != null) {
                 try {
                     var aiResponse = apiAi.VoiceRequest(samples);
-                    ProcessResult(aiResponse);  
+                    ProcessResult(aiResponse);
                 } catch (Exception ex) {
                     FireOnError(ex);
                 }
@@ -235,34 +235,33 @@ namespace ApiAiSDK.Unity
 	public class AIResponseEventArgs : EventArgs
 	{
 		private readonly AIResponse response;
-		
+
 		public AIResponse Response {
 			get {
 				return response;
 			}
 		}
-		
+
 		public AIResponseEventArgs(AIResponse response)
 		{
 			this.response = response;
 		}
 	}
-	
+
 	public class AIErrorEventArgs : EventArgs
 	{
-		
+
 		private readonly Exception exception;
-		
+
 		public Exception Exception {
 			get {
 				return exception;
 			}
 		}
-		
+
 		public AIErrorEventArgs(Exception ex)
 		{
 			exception = ex;
 		}
 	}
 }
-
