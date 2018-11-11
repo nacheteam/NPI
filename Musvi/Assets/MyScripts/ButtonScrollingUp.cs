@@ -9,28 +9,20 @@ public class ButtonScrollingUp : MonoBehaviour {
     string text2;
     string text3;
     string text4;
-    public int actual_pos;
     public Camera cam;
     public ScrollRect myScrollRect;
     public GameObject sphere;
     public GameObject image;
     public Text text;
-    public int sum;
     public Sprite image1;
     public Sprite image2;
     public Sprite image3;
     public Sprite image4;
     float full_sum;
-    private float nextActionTime = 0.0f;
-    public float period = 0.5f;
-    float actual_time;
     public List<Sprite> images;
     public List<string> texts;
-    bool first;
-    bool waiting;
-    bool listening;
-    private ApiAiModule ai_module;
-
+    public ApiAiModule ai_module;
+    public int actual_pos;
     public TextToSpeech tts;
 
     // Use this for initialization
@@ -38,7 +30,6 @@ public class ButtonScrollingUp : MonoBehaviour {
     {
         tts = GetComponent<TextToSpeech>();
 
-        sum = 0;
         images = new List<Sprite>();
         texts = new List<string>();
         text1 = "Duelo a garrotazos o La riña​ es una de las Pinturas negras que Francisco de Goya realizó para la decoración de los muros de la casa —llamada la Quinta del Sordo— que el pintor adquirió en 1819. La obra ocupaba un lugar en el muro de la izquierda mirando desde la puerta de la planta alta de la casa, compartiendo la pared con Las Parcas y dejando en medio una ventana.";
@@ -54,14 +45,12 @@ public class ButtonScrollingUp : MonoBehaviour {
         texts.Add(text2);
         texts.Add(text4);
         actual_pos = 0;
-        waiting = false;
-        first = true;
         ai_module = GetComponent<ApiAiModule>();
-        listening = false;
         InvokeRepeating("ExecuteAfterTime", 2, 2);
     }
     void ExecuteAfterTime()
     {
+        int sum;
         RaycastHit hit;
         Vector3 pos = cam.transform.position;
         if (Physics.Raycast(pos, cam.transform.forward, out hit, 10000))
@@ -70,25 +59,42 @@ public class ButtonScrollingUp : MonoBehaviour {
             {
                 sum = 2;
                 actual_pos+=sum;
-                if (actual_pos > images.Count && (actual_pos % 2) == 0)
-                    actual_pos = 1;
-                else if (actual_pos > images.Count  && (actual_pos % 2) != 0)
+                if (actual_pos >= images.Count && (actual_pos % 2) == 0)
                     actual_pos = 0;
+                else if (actual_pos >= images.Count  && (actual_pos % 2) != 0)
+                    actual_pos = 1;
                 image.GetComponent<SpriteRenderer>().sprite = images[actual_pos];
                 text.GetComponent<Text>().text = texts[actual_pos];
             }
             else if (hit.transform.name == "PreviousImage")
             {
-                //tts.Speak("Hola bro");
-                //ai_module.SendText();
                 sum = 2;
                 actual_pos-=sum;
-                if (actual_pos < -1)
+                if (actual_pos < 0 && (actual_pos % 2) == 0)
+                    actual_pos = 2;
+                else if (actual_pos < 0 && (actual_pos % 2) != 0)
                     actual_pos = 3;
-                else if (actual_pos < 0)
-                    actual_pos = 4;
                 image.GetComponent<SpriteRenderer>().sprite = images[actual_pos];
                 text.GetComponent<Text>().text = texts[actual_pos];
+            }
+            switch (actual_pos)
+            {
+              case 0:
+                ai_module.SendText("Goya");
+                ai_module.SendText("Garrotazos");
+                break;
+              case 1:
+                ai_module.SendText("Velazquez");
+                ai_module.SendText("Meninas");
+                break;
+              case 2:
+                ai_module.SendText("Goya");
+                ai_module.SendText("Fusilamientos");
+                break;
+              case 3:
+                ai_module.SendText("Velazquez");
+                ai_module.SendText("Breda");
+                break;
             }
             myScrollRect.verticalNormalizedPosition = full_sum;
             Debug.Log(hit.transform.name);
@@ -97,18 +103,10 @@ public class ButtonScrollingUp : MonoBehaviour {
         // Update is called once per frame
     void Update(){
     if(Input.touchCount == 1){
-      ai_module.SendText();
-        /*if(Input.GetTouch(0).phase == TouchPhase.Began && !listening)
+        if(Input.GetTouch(0).phase == TouchPhase.Began)
         {
-
-            listening = true;
-            //text.GetComponent<Text>().text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-        } else if (Input.GetTouch(0).phase == TouchPhase.Began && listening){
-            listening = false;
-            //ai_module.StopListening();
-            //ai_module.SendText();
-            //text.GetComponent<Text>().text = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-        }*/
+          ai_module.StartNativeRecognition();
+        }
     }
 
         Vector3 pos = cam.transform.position;

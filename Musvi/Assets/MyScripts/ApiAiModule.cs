@@ -24,6 +24,7 @@ using ApiAiSDK;
 using ApiAiSDK.Model;
 using ApiAiSDK.Unity;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Collections.Generic;
 
@@ -47,6 +48,7 @@ public class ApiAiModule : MonoBehaviour
     // Use this for initialization
     IEnumerator Start()
     {
+
         // check access to the Microphone
         yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
         if (!Application.HasUserAuthorization(UserAuthorization.Microphone))
@@ -59,7 +61,7 @@ public class ApiAiModule : MonoBehaviour
             return true;
         };
 
-        const string ACCESS_TOKEN = "3485a96fb27744db83e78b8c4bc9e7b7";
+        const string ACCESS_TOKEN = "f5ac8103d7da44fbb15a512990ecd204";
 
         var config = new AIConfiguration(ACCESS_TOKEN, SupportedLanguage.Spanish);
 
@@ -71,8 +73,8 @@ public class ApiAiModule : MonoBehaviour
         apiAiUnity.OnError += HandleOnError;
         apiAiUnity.OnResult += HandleOnResult;
 
-
-
+        SendText("Garrotazos");
+        SendText("Goya");
     }
 
     void HandleOnResult(object sender, AIResponseEventArgs e)
@@ -85,7 +87,7 @@ public class ApiAiModule : MonoBehaviour
 
                 var outText = JsonConvert.SerializeObject(aiResponse, jsonSettings);
 
-		            text_to_speech.Speak(outText);
+		            text_to_speech.Speak(aiResponse.Result.Fulfillment.Speech);
 
 
             } else
@@ -100,7 +102,7 @@ public class ApiAiModule : MonoBehaviour
         RunInMainThread(() => {
             Debug.LogException(e.Exception);
             Debug.Log(e.ToString());
-            text_to_speech.Speak(e.ToString());
+            text_to_speech.Speak("Ha habido un error.");
         });
     }
 
@@ -152,31 +154,25 @@ public class ApiAiModule : MonoBehaviour
       }
     }
 
-    public void SendText()
+    public void SendText(string text_)
     {
-        //var text = inputTextField.text;
-        var text = "Hola";
-
-        Debug.Log(text);
-
-        AIResponse response = apiAiUnity.TextRequest(text);
+        AIResponse response = apiAiUnity.TextRequest(text_);
 
         if (response != null)
         {
             Debug.Log("Resolved query: " + response.Result.ResolvedQuery);
             var outText = JsonConvert.SerializeObject(response, jsonSettings);
-            //var str_res = JObject.Parse(outText);
-            //var answer = str_res["Id"].ToString();
+            //var str_res = JObject.Parse(response.Result.ResolvedQuery);
+            //var answer = str_res["result"]["resolvedQuery"].ToString();
 
-            text_to_speech.Speak(outText.ToString());
+            //text_to_speech.Speak("La respuesta es: " + respons);
+
             //TextDialog.text = outText;
 
-            Debug.Log("Result: " + outText);
-
+            //text_to_speech.Speak(response.Result.Fulfillment.Speech);
         } else
         {
             Debug.LogError("Response is null");
-            TextDialog.text = "Algo ha fallado";
         }
 
     }
