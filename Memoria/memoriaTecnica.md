@@ -16,12 +16,21 @@ unas clases propias de Unity que permiten las
 llamadas entre lenguajes. Las funciones de Java
 a las que se va a llamar desde C# deben estar
 exportadas en una biblioteca de java tipo .jar
-o .aar.
+o .aar. Esto se hace dentro de android studio
+agregando bibliotecas especificas de unity.
 
 Las clases de Unity que nos interesan heredan de
 la clase MonoBehaviour y se pueden asignar con la
 interfaz de desarrollo a un objeto de la escena.
 Este es el metodo usual de programacion en Unity.
+
+Para desarrollar un plugin en Unity se deben tener
+dos objetos de c# de tipo "AndroidJavaObject".
+Uno contendra el contexto de Android y el otro 
+la clase especifica de Android que se debe utilizar,
+en nuestro caso la clase con funcionalidad text to 
+speech. El metodo que nos permite llamar a una 
+funcion de otro lenguaje es CallStatic.
 
 En concreto nuestro plugin llama a una clase
 de Java a traves de un metodo Speak escrito en
