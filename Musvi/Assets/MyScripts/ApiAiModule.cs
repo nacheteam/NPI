@@ -84,9 +84,6 @@ public class ApiAiModule : MonoBehaviour
             if (aiResponse != null)
             {
                 Debug.Log(aiResponse.Result.ResolvedQuery);
-
-                var outText = JsonConvert.SerializeObject(aiResponse, jsonSettings);
-
 		            text_to_speech.Speak(aiResponse.Result.Fulfillment.Speech); //El TTS dicta la respuesta
 
 
@@ -161,8 +158,6 @@ public class ApiAiModule : MonoBehaviour
         if (response != null)
         {
             Debug.Log("Resolved query: " + response.Result.ResolvedQuery);
-            var outText = JsonConvert.SerializeObject(response, jsonSettings);
-
         } else
         {
             Debug.LogError("Response is null");
