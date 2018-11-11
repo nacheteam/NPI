@@ -49,6 +49,26 @@ public class NFCReader : MonoBehaviour {
 														mIntent.Call<AndroidJavaObject>("putExtra", "Id", 0);
 														text_.GetComponent<Text>().text = GetComponent<ButtonScrollingUp>().texts[GetComponent<ButtonScrollingUp>().actual_pos];
 
+														switch (GetComponent<ButtonScrollingUp>().actual_pos)
+														{
+															case 0:
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Goya");
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Garrotazos");
+																break;
+															case 1:
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Velazquez");
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Meninas");
+																break;
+															case 2:
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Goya");
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Fusilamientos");
+																break;
+															case 3:
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Velazquez");
+																GetComponent<ButtonScrollingUp>().ai_module.SendText("Breda");
+																break;
+														}
+
 														/*
 														AndroidJavaObject newIntent = mActivity.Call<AndroidJavaObject>("getIntent");
 														int FLAG_ACTIVITY_NEW_TASK = mIntent.GetStatic<int>("FLAG_ACTIVITY_NEW_TASK");
