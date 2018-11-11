@@ -69,6 +69,7 @@
     <Compile Include="Assets\MyScripts\ButtonScrollingUp.cs" />
     <Compile Include="Assets\MyScripts\moveCamera.cs" />
     <Compile Include="Assets\MyScripts\NFCReader.cs" />
+    <Compile Include="Assets\MyScripts\QuitDownside.cs" />
     <Compile Include="Assets\MyScripts\TextToSpeech.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_ModelTarget.xml" />

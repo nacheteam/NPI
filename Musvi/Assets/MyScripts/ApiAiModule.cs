@@ -38,11 +38,6 @@ public class ApiAiModule : MonoBehaviour
     public AudioClip listeningSound;
     private TextToSpeech text_to_speech;
 
-    private readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings
-    {
-        NullValueHandling = NullValueHandling.Ignore,
-    };
-
     private readonly Queue<Action> ExecuteOnMainThread = new Queue<Action>();
 
     // Use this for initialization

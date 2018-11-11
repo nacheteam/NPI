@@ -1887,6 +1887,7 @@ GameObject:
   - component: {fileID: 1964602104}
   - component: {fileID: 1964602105}
   - component: {fileID: 1964602103}
+  - component: {fileID: 1964602107}
   m_Layer: 0
   m_Name: ARCamera
   m_TagString: Untagged
@@ -2042,3 +2043,14 @@ MonoBehaviour:
   text: {fileID: 1124732206}
   TextDialog: {fileID: 0}
   listeningSound: {fileID: 8300000, guid: a5c3aed75486c4d22aff51a1dcfedaf3, type: 3}
+--- !u!114 &1964602107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964602097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447af0aa95f3eb84c89441f02eff666b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
