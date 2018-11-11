@@ -128,25 +128,19 @@ Así mismo cada grupo de intent tiene un contexto asociado, de forma que se pued
 
 ### Vuforia
 
-Vuforia funciona como una interfaz de realidad aumentada.
-Un codigo similar al QR sirve para agregar el cuadro a la
-escena. Para interactuar con el cuadro se utilizan botones
-con los que se interactua con el cuadro. Se puede hacer
-scrolling de la descripcion del cuadro con dos botones.
-Estos se activan al mirarlos. Otros botones sirven para
-cambiar de cuadro.
+Vuforia es un paquete de realidad aumentada en el cuál se basa nuestro proyecto, básicamente nos proporciana una cámara la cual tiene unos target images o imagenes objetivo a los cuáles puedes mirar y entonces aparece toda una escena 3d de unity asociada a esa imagen.
+La imagen objetivo solo debe cumplir con el objetivo de tener muchos puntos diferentes, cuanto mayor sea la densidad de puntos en la imagen mayor será la estabilidad y el reconocimiento de la imagen.
+No solo pueden usarse imágenes sino también figuras u objetos en 3D.
+Cuando tienes lista la imagen y la cámara, asocias tu ID de vuforia, descargas la imagen objetivo y lo asocias todo en unity.
 
 ### Sensores
 
-Se han usado varios sensores. En primer lugar los sensores
-NFC sirven para cambiar el autor de las obras. En nuestro
-prototipo solo se usan obras de dos autores pero podria haber
-tantos como se quisiese. Otro sensor que se utiliza es la
-camara, es primordial para toda la funcionalidad. Nuestra
-aplicacion se basa en realidad aumentada, por eso necesitamos
-poder tener una camara activa que sirva para observar el mundo.
-En ultima instancia se utiliza el giroscopio. Al posar las
-Google Cardboard en una superficie la aplicacion se cierra.
+Se han usado varios sensores. En primer lugar los sensores NFC sirven para cambiar el autor de las obras, comprobamos si ha habido un intent de un NFC, lo usamos para cambiar el autor y el cuadro y marcamos los intent que ya hemos usado, para que no se repita el cambio de autor de manera indefinida. 
+En nuestro prototipo solo se usan obras de dos autores pero podria haber tantos como se quisiese. 
+Otro sensor que se utiliza es la camara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. A raíz de eso necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
+Utilizamos integración con cardboard para hacer una interfaz mas amigable y atractiva para el usuario.
+También utilizamos el touch de la pantalla para lanzar el asistente de dialogflow, el cuál se activa también con las cardboards. 
+En ultima instancia se utiliza el giroscopio para cerrar la aplicación en caso de dejar el móvil, por si algún usuario se le olvida cerrar la palicación ya que será habitual dejar las gafas y a lo mejor no cerrar la aplicación después de hacerlo.
 Esto constituye una forma natural de acabar el recorrido guiado.
 
 ### Referencias
