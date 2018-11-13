@@ -216,9 +216,10 @@ Cuando tienes lista la imagen y la cámara, asocias tu ID de vuforia, descargas 
 
 Se han usado varios sensores. En primer lugar los sensores NFC sirven para cambiar el autor de las obras, comprobamos si ha habido un intent de un NFC, lo usamos para cambiar el autor y el cuadro y marcamos los intent que ya hemos usado, para que no se repita el cambio de autor de manera indefinida.
 En nuestro prototipo solo se usan obras de dos autores pero podría haber tantos como se quisiese.
-Otro sensor que se utiliza es la cámara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. A raíz de eso necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
-Utilizamos integración con cardboard para hacer una interfaz mas amigable y atractiva para el usuario.
-También utilizamos el touch de la pantalla para lanzar el asistente de dialogflow, el cuál se activa también con las cardboards.
+Otro sensor que se utiliza es la cámara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. Se implementa esta interfaz haciendo un raycasting desde la cámara y detectando la colisión del rayo con un complemento llamando colisionador en los objetos, los objetos que tienen interacción de raycasting son 4 botones puestos al lado del cuadro, dos sirven para ver la imagen anterior y siguiente, y otros dos para hacer un scroll al texto lateral, esto se ha programado en un script de la propia cámara de realidad aumentada. 
+A raíz de esto necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
+Utilizamos integración con cardboard para hacer una interfaz mas amigable y atractiva para el usuario, esto se ha conseguido con un paquete de vuforia que interactua con la SDK de google.
+También utilizamos el touch de la pantalla para lanzar el asistente de dialogflow, el cuál se activa también con el botón de las cardboards, esto se realiza registrando los toques de la pantalla.
 En ultima instancia se utiliza el giroscopio para cerrar la aplicación en caso de dejar el móvil, por si algún usuario se le olvida cerrar la aplicación ya que será habitual dejar las gafas y a lo mejor no cerrar la aplicación después de hacerlo.
 Esto constituye una forma natural de acabar el recorrido guiado.
 
