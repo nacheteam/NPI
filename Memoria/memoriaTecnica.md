@@ -1,4 +1,4 @@
-# Memoria tecnica
+# Memoria técnica
 
 **__Autores__**:
 
@@ -12,16 +12,16 @@ Manuel Enrique López Roldán
 
 Nuestro proyecto se ha desarrollado en Unity, un entorno de desarrollo 2D y 3D.
 
-Para integrar toda la aplicacion hemos utilizado
+Para integrar toda la aplicación hemos utilizado
 tres bibliotecas: la biblioteca TextToSpeech de
 Android, la API de DialogFlow en Unity y Vuforia.
 
 ## Text to speech
 
 El acceso a la API de TextToSpeech en Android
-se hace a traves de un plugin para Unity. Estos
+se hace a través de un plugin para Unity. Estos
 plugin se escriben en C#. Son plugin que llaman
-a los metodos de Java de Android gracias a
+a los métodos de Java de Android gracias a
 unas clases propias de Unity que permiten las
 llamadas entre lenguajes. Las funciones de Java
 a las que se va a llamar desde C# deben estar
@@ -32,31 +32,31 @@ agregando bibliotecas especificas de unity.
 Las clases de Unity que nos interesan heredan de
 la clase MonoBehaviour y se pueden asignar con la
 interfaz de desarrollo a un objeto de la escena.
-Este es el metodo usual de programacion en Unity.
+Este es el método usual de programación en Unity.
 
 Para desarrollar un plugin en Unity se deben tener
 dos objetos de c# de tipo "AndroidJavaObject".
-Uno contendra el contexto de Android y el otro
+Uno contendrá el contexto de Android y el otro
 la clase especifica de Android que se debe utilizar,
 en nuestro caso la clase con funcionalidad text to
-speech. El metodo que nos permite llamar a una
-funcion de otro lenguaje es CallStatic.
+speech. El método que nos permite llamar a una
+función de otro lenguaje es CallStatic.
 
 En concreto nuestro plugin llama a una clase
-de Java a traves de un metodo Speak escrito en
-C#. Este metodo a su vez llama al metodo TTSME de
-la clase de Java. Como resultado el telefono
+de Java a través de un método Speak escrito en
+C#. Este método a su vez llama al método TTSME de
+la clase de Java. Como resultado el teléfono
 reproduce un audio con el contenido de una string.
 
-En principio el asistente podria interactuar en
+En principio el asistente podría interactuar en
 cualquier idioma. Solo se tiene que inicializar
 la clase TTS de manera adecuada.
 
 ## DialogFlow
 
 Nuestro bot de DialogFlow esta dividido en grupos de intents.
-Los grupos de intents responden preguntas sobre una temática concreta, ya sea un cuadro, un autor o incluso el propio asisntente.
-A continuacion se enumeran los diferentes grupos de intents:
+Los grupos de intents responden preguntas sobre una temática concreta, ya sea un cuadro, un autor o incluso el propio asistente.
+A continuación se enumeran los diferentes grupos de intents:
 
 1) Autores:
 
@@ -66,7 +66,7 @@ A continuacion se enumeran los diferentes grupos de intents:
 
   - Información sobre la profundidad de la aportación de dicho autor al panorama de la pintura universal.
 
-  - Intormación referente a las instituciones de estudio de los autores.
+  - Información referente a las instituciones de estudio de los autores.
 
   - Información sobre el dinero o la situación económica de los mismos.
 
@@ -119,7 +119,7 @@ A continuacion se enumeran los diferentes grupos de intents:
 
   - Información sobre los colores empleados por el autor en el cuadro.
 
-  - Informacion sobre el contexto histórico de la obra.
+  - Información sobre el contexto histórico de la obra.
 
   - Información sobre la edad a la que el autor pintó el cuadro.
 
@@ -164,10 +164,10 @@ A continuacion se enumeran los diferentes grupos de intents:
 
   - Responde a la pregunta de quién es.
 
-  - Respode sobre su utilidad
+  - Res pode sobre su utilidad
 
 4) Museo:
-  El asistente de voz responde preguntas relacionadas con el museo como edificio en sí. Las preguntas impementadas en este ámbito son:
+  El asistente de voz responde preguntas relacionadas con el museo como edificio en sí. Las preguntas implementadas en este ámbito son:
 
   - Qué artistas hay en la exposición.
 
@@ -187,9 +187,9 @@ A continuacion se enumeran los diferentes grupos de intents:
 
   - La localización física del museo.
 
-  - La decha de creación.
+  - La fecha de creación.
 
-  - El número de habitaciones del museo y cúales son.
+  - El número de habitaciones del museo y cales son.
 
   - Dónde están las habitaciones del museo.
 
@@ -207,7 +207,7 @@ Así mismo cada grupo de intent tiene un contexto asociado, de forma que se pued
 
 ## Vuforia
 
-Vuforia es un paquete de realidad aumentada en el cuál se basa nuestro proyecto, básicamente nos proporciana una cámara la cual tiene unos target images o imagenes objetivo a los cuáles puedes mirar y entonces aparece toda una escena 3d de unity asociada a esa imagen.
+Vuforia es un paquete de realidad aumentada en el cuál se basa nuestro proyecto, básicamente nos proporciona una cámara la cual tiene unos target images o imágenes objetivo a los cuáles puedes mirar y entonces aparece toda una escena 3d de unity asociada a esa imagen.
 La imagen objetivo solo debe cumplir con el objetivo de tener muchos puntos diferentes, cuanto mayor sea la densidad de puntos en la imagen mayor será la estabilidad y el reconocimiento de la imagen.
 No solo pueden usarse imágenes sino también figuras u objetos en 3D.
 Cuando tienes lista la imagen y la cámara, asocias tu ID de vuforia, descargas la imagen objetivo y lo asocias todo en unity.
@@ -215,11 +215,11 @@ Cuando tienes lista la imagen y la cámara, asocias tu ID de vuforia, descargas 
 ## Sensores
 
 Se han usado varios sensores. En primer lugar los sensores NFC sirven para cambiar el autor de las obras, comprobamos si ha habido un intent de un NFC, lo usamos para cambiar el autor y el cuadro y marcamos los intent que ya hemos usado, para que no se repita el cambio de autor de manera indefinida.
-En nuestro prototipo solo se usan obras de dos autores pero podria haber tantos como se quisiese.
-Otro sensor que se utiliza es la camara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. A raíz de eso necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
+En nuestro prototipo solo se usan obras de dos autores pero podría haber tantos como se quisiese.
+Otro sensor que se utiliza es la cámara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. A raíz de eso necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
 Utilizamos integración con cardboard para hacer una interfaz mas amigable y atractiva para el usuario.
 También utilizamos el touch de la pantalla para lanzar el asistente de dialogflow, el cuál se activa también con las cardboards.
-En ultima instancia se utiliza el giroscopio para cerrar la aplicación en caso de dejar el móvil, por si algún usuario se le olvida cerrar la palicación ya que será habitual dejar las gafas y a lo mejor no cerrar la aplicación después de hacerlo.
+En ultima instancia se utiliza el giroscopio para cerrar la aplicación en caso de dejar el móvil, por si algún usuario se le olvida cerrar la aplicación ya que será habitual dejar las gafas y a lo mejor no cerrar la aplicación después de hacerlo.
 Esto constituye una forma natural de acabar el recorrido guiado.
 
 ## Referencias
@@ -229,4 +229,4 @@ Plugin de TTS: https://github.com/HoseinPorazar/Android-Native-TTS-plugin-for-Un
 
 Plugin de DialogFlow: https://github.com/dialogflow/dialogflow-unity-client
 
-Librería de relialidad aumentada y virtual:https://www.vuforia.com/
+Librería de realidad aumentada y virtual:https://www.vuforia.com/

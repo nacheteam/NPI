@@ -17,7 +17,7 @@ Tras esto el usuario se coloca las gafas Google Cardboard y puede empezar a mira
 
 Para que la visita sea una actividad que aporte conocimiento y entretenimiento extra al visitante se incorpora también un asistente de voz con el que se puede interactuar sobre cualquier tema relacionado con los cuadros, autores, museo o incluso sobre él mismo. La interacción con el asistente es fácil ya que se activa mediante un botón presente en las gafas que queda accesible al usuario.
 
-Toda esta experiencia hace que traer cuadros de museos muy lejanos entre paises y que requieren un espacio muy grande (algunos de ellos llegan a tener varios metros de ancho y alto) se haga muy sencilla ya que no se requiere de un espacio grande ni de una logística de protección y restauración de los cuadros. Además este proyecto hace que las personas de un país con pocos recursos para visitar pinacotecas de países extranjeros tengan una forma económica y cercana a casa para acceder a la cultura.
+Toda esta experiencia hace que traer cuadros de museos muy lejanos entre países y que requieren un espacio muy grande (algunos de ellos llegan a tener varios metros de ancho y alto) se haga muy sencilla ya que no se requiere de un espacio grande ni de una logística de protección y restauración de los cuadros. Además este proyecto hace que las personas de un país con pocos recursos para visitar pinacotecas de países extranjeros tengan una forma económica y cercana a casa para acceder a la cultura.
 
 ## Integración de los sensores con la aplicación
 Los sensores que hemos empleado hacen que la experiencia del usuario sea muy natural e intuitiva. Para ello hemos integrado la cámara, el NFC, sensor de toque en la pantalla y el giroscopio.
@@ -26,7 +26,7 @@ En primer lugar la integración de la cámara ha sido el elemento principal de l
 
 El sensor NFC lo hemos pensado como un elemento de cambio rápido entre dos exposiciones distintas permitiendo que el usuario pueda cambiar entre las mismas sin necesidad de sacar el teléfono de las Cardboard ya que el NFC no lo requiere. Sólo debe tocar el sensor con las gafas para que la exposición cambie para él.
 
-El sensor de toque en la pantalla lo hemos utilizado mediante el botón que tienen las Google Cardboard de forma que una pulsación de ese botón es reconocida por el dispotivo como un tap en la pantalla. De esta forma el usuario puede continuar la experiencia del museo sin tener que sacar el móvil de las gafas ni hacer un gesto molesto con la cabeza para comenzar la asisntencia por voz.
+El sensor de toque en la pantalla lo hemos utilizado mediante el botón que tienen las Google Cardboard de forma que una pulsación de ese botón es reconocida por el dispotivo como un tap en la pantalla. De esta forma el usuario puede continuar la experiencia del museo sin tener que sacar el móvil de las gafas ni hacer un gesto molesto con la cabeza para comenzar la asistencia por voz.
 
 Por último, el giroscopio lo hemos utilizado para el momento de finalizar la exposición. Si una persona al finalizar la visita deja las gafas sobre la mesa la aplicación se cerrará automáticamente dejando el dispositivo del usuario en el mismo estado en el que estaba antes de entrar al museo.
 
