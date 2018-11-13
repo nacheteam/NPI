@@ -26,7 +26,7 @@ En primer lugar la integración de la cámara ha sido el elemento principal de l
 
 El sensor NFC lo hemos pensado como un elemento de cambio rápido entre dos exposiciones distintas permitiendo que el usuario pueda cambiar entre las mismas sin necesidad de sacar el teléfono de las Cardboard ya que el NFC no lo requiere. Sólo debe tocar el sensor con las gafas para que la exposición cambie para él.
 
-El sensor de toque en la pantalla lo hemos utilizado mediante el botón que tienen las Google Cardboard de forma que una pulsación de ese botón es reconocida por el dispotivo como un tap en la pantalla. De esta forma el usuario puede continuar la experiencia del museo sin tener que sacar el móvil de las gafas ni hacer un gesto molesto con la cabeza para comenzar la asistencia por voz.
+El sensor de toque en la pantalla lo hemos utilizado mediante el botón que tienen las Google Cardboard de forma que una pulsación de ese botón es reconocida por el dispositivo como un tap en la pantalla. De esta forma el usuario puede continuar la experiencia del museo sin tener que sacar el móvil de las gafas ni hacer un gesto molesto con la cabeza para comenzar la asistencia por voz.
 
 Por último, el giroscopio lo hemos utilizado para el momento de finalizar la exposición. Si una persona al finalizar la visita deja las gafas sobre la mesa la aplicación se cerrará automáticamente dejando el dispositivo del usuario en el mismo estado en el que estaba antes de entrar al museo.
 

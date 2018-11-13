@@ -26,8 +26,8 @@ unas clases propias de Unity que permiten las
 llamadas entre lenguajes. Las funciones de Java
 a las que se va a llamar desde C# deben estar
 exportadas en una biblioteca de java tipo .jar
-o .aar. Esto se hace dentro de android studio
-agregando bibliotecas especificas de unity.
+o .aar. Esto se hace dentro de Android Studio
+agregando bibliotecas especificas de Unity.
 
 Las clases de Unity que nos interesan heredan de
 la clase MonoBehaviour y se pueden asignar con la
@@ -46,7 +46,7 @@ En concreto nuestro plugin llama a una clase
 de Java a través de un método Speak escrito en
 C#. Este método a su vez llama al método TTSME de
 la clase de Java. Como resultado el teléfono
-reproduce un audio con el contenido de una string.
+reproduce un audio con el contenido de una cadena de texto.
 
 En principio el asistente podría interactuar en
 cualquier idioma. Solo se tiene que inicializar
@@ -207,10 +207,10 @@ Así mismo cada grupo de intent tiene un contexto asociado, de forma que se pued
 
 ## Vuforia
 
-Vuforia es un paquete de realidad aumentada en el cuál se basa nuestro proyecto, básicamente nos proporciona una cámara la cual tiene unos target images o imágenes objetivo a los cuáles puedes mirar y entonces aparece toda una escena 3d de unity asociada a esa imagen.
+Vuforia es un paquete de realidad aumentada en el cuál se basa nuestro proyecto, básicamente nos proporciona una cámara la cual tiene unos target images o imágenes objetivo a los cuáles puedes mirar y entonces aparece toda una escena 3d de Unity asociada a esa imagen.
 La imagen objetivo solo debe cumplir con el objetivo de tener muchos puntos diferentes, cuanto mayor sea la densidad de puntos en la imagen mayor será la estabilidad y el reconocimiento de la imagen.
 No solo pueden usarse imágenes sino también figuras u objetos en 3D.
-Cuando tienes lista la imagen y la cámara, asocias tu ID de vuforia, descargas la imagen objetivo y lo asocias todo en unity.
+Cuando tienes lista la imagen y la cámara, asocias tu ID de Vuforia, descargas la imagen objetivo y lo asocias todo en Unity.
 
 ## Sensores
 
@@ -218,8 +218,8 @@ Se han usado varios sensores. En primer lugar los sensores NFC sirven para cambi
 En nuestro prototipo solo se usan obras de dos autores pero podría haber tantos como se quisiese.
 Otro sensor que se utiliza es la cámara, es primordial para toda la funcionalidad ya que no tenemos ni interfaz, esta está implementada en la propia realidad aumentada. Se implementa esta interfaz haciendo un raycasting desde la cámara y detectando la colisión del rayo con un complemento llamando colisionador en los objetos, los objetos que tienen interacción de raycasting son 4 botones puestos al lado del cuadro, dos sirven para ver la imagen anterior y siguiente, y otros dos para hacer un scroll al texto lateral, esto se ha programado en un script de la propia cámara de realidad aumentada. 
 A raíz de esto necesitaremos el permiso de cámara siempre para ejecutar la propia aplicación.
-Utilizamos integración con cardboard para hacer una interfaz mas amigable y atractiva para el usuario, esto se ha conseguido con un paquete de vuforia que interactua con la SDK de google.
-También utilizamos el touch de la pantalla para lanzar el asistente de dialogflow, el cuál se activa también con el botón de las cardboards, esto se realiza registrando los toques de la pantalla.
+Utilizamos integración con Cardboard para hacer una interfaz mas amigable y atractiva para el usuario, esto se ha conseguido con un paquete de Vuforia que interactúa con la SDK de Google.
+También utilizamos el touch de la pantalla para lanzar el asistente de DialogFlow, el cuál se activa también con el botón de las Cardboard, esto se realiza registrando los toques de la pantalla.
 En ultima instancia se utiliza el giroscopio para cerrar la aplicación en caso de dejar el móvil, por si algún usuario se le olvida cerrar la aplicación ya que será habitual dejar las gafas y a lo mejor no cerrar la aplicación después de hacerlo.
 Esto constituye una forma natural de acabar el recorrido guiado.
 
