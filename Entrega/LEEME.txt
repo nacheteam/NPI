@@ -4,3 +4,6 @@ del código también se puede acceder a través del repositorio de GitHub: https
 
 Se adjunta asimismo el vídeo en la calidad estimada para poder subirlo a la plataforma. Si se quiere visualizar
 una mayor calidad se puede hacer accediendo al siguiente enlace de YouTube: https://www.youtube.com/watch?v=Z1ke9fHc8fo&feature=share
+
+El proyecto ha sido desarrollado en Unity, por lo que se requiere de dicho software para poder visualizar el proyecto y
+su código en su contexto.
