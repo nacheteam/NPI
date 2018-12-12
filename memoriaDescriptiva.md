@@ -8,6 +8,9 @@ Diego Asterio de Zaballa
 
 Manuel Enrique López Roldán
 
+## Musvi
+En este documento se desarrolla un software diseñado para la integración de un museo virtual. Queremos que esta idea refleje tanto las necesidades y exigencias de los usuarios como las que la empresa que alberga el negocio puedan tener. Para ello se explica convenientemente las funcionalidades, ventajas y recursos que disponen el usuario y la empresa de forma distinguida. Este proyecto se desarrolla en un marco de innovación con el propósito de hacer llegar la cultura a la gente de una mejor forma, más asequible y más cercana a su lugar de residencia haciendo la idea atractiva para los inversores por su versatilidad, bajo coste y fácil mantenimiento. A continuación desarrollaremos la idea tanto desde el punto de vista del usuario como desde el punto de vista de la empresa para recalcar en cada caso las ventajas que presenta el museo virtual Musvi.
+
 ## Experiencia desde el punto de vista del usuario
 El lugar del museo para el usuario no es de relevancia en este caso, puede ser desde un museo convencional con un espacio y recursos muy grande hasta un museo modesto que no tenga demasiado espacio. La experiencia del usuario será lo más intuitiva y natural posible, por lo que vamos a describir ahora cuál sería este funcionamiento para concretar la idea.
 
