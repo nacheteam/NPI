@@ -1,0 +1,114 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{extsizes}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage[usenames]{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{accents}
+\usepackage{flushend}
+\usepackage{tikz}
+\usepackage[LGR,T1]{fontenc}
+\newcommand{\textgreek}[1]{\begingroup\fontencoding{LGR}\selectfont#1\endgroup}
+\usetikzlibrary{arrows,automata}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\usepackage{listings}
+\usepackage{graphics,graphicx, float} %para incluir imágenes y colocarlas
+
+
+
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[vmargin=3cm,hmargin=3cm]{geometry}
+%\setlength\parindent{0pt}
+
+\setlength\parindent{0pt}
+
+
+% Carpeta con las imágenes
+%\graphicspath{{}}
+
+\begin{document}
+
+
+	\begin{center}
+		\LARGE{\textbf{Nuevos Paradigmas de Interacción (2018-2019)} \\ Grado en Ingeniería Informática \\ Universidad de Granada }
+		\vspace*{2.5cm}
+
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{4pt}
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+		\vspace{0.5cm}
+
+		\Huge{Memoria Descriptiva}
+
+		\vspace{0.5cm}
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+		\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{4pt}
+
+		\vspace{2cm}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1]{./Imagenes/logo_informatica.png}
+	\label{fig:logougrciencias}
+\end{figure}
+
+		\vspace{4cm}
+		\LARGE{Ignacio Aguilera Martos, Diego Asterio de Zaballa,\\ Manuel López Roldán \\ 16 de Diciembre de 2018 }
+
+	\end{center}
+
+
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Musvi}
+En este documento se desarrolla un software diseñado para la integración de un museo virtual. Queremos que esta idea refleje tanto las necesidades y exigencias de los usuarios como las que la empresa que alberga el negocio puedan tener. Para ello se explica convenientemente las funcionalidades, ventajas y recursos que disponen el usuario y la empresa de forma distinguida. Este proyecto se desarrolla en un marco de innovación con el propósito de hacer llegar la cultura a la gente de una mejor forma, más asequible y más cercana a su lugar de residencia haciendo la idea atractiva para los inversores por su versatilidad, bajo coste y fácil mantenimiento. A continuación desarrollaremos la idea tanto desde el punto de vista del usuario como desde el punto de vista de la empresa para recalcar en cada caso las ventajas que presenta el museo virtual Musvi.
+
+\section{Experiencia desde el punto de vista del usuario}
+El lugar del museo para el usuario no es de relevancia en este caso, puede ser desde un museo convencional con un espacio y recursos muy grande hasta un museo modesto que no tenga demasiado espacio. La experiencia del usuario será lo más intuitiva y natural posible, por lo que vamos a describir ahora cuál sería este funcionamiento para concretar la idea.
+
+En primer lugar el usuario entrará en el museo, teniendo una pequeña sala que hará las veces de recibidor para poder explicarle al mismo el funcionamiento. Se le indicará la aplicación que tiene que descargar en su dispositivo o se le facilitará un Smartphone con la aplicación ya instalada si el museo cuenta con estos recursos. Tras la presentación con la aplicación se le pedirá al usuario que coloque el móvil en las gafas y se le ajustarán al mismo. La experiencia para él no va a cambiar ya que, por defecto, la aplicación muestra lo que ve la cámara con lo que el visitante podrá moverse con libertad por el espacio sin miedo a tropezar o chocar con alguien o algo.
+
+En este primer contacto se le hará una demostración al usuario de los postes empleados para cambiar las exposiciones. Los postes son utilizados simplemente acercando el dispositivo móvil al mismo. En caso de que el museo cuente con mayor espacio se puede implementar el cambio de exposiciones simplemente cambiando de habitación, esto es, en cada habitación hay una exposición.
+
+Tras esta recepción se le explicará al usuario con una demostración cómo funcionan tanto la interacción con los cuadros como la interacción con las estatuas y modelos 3D. Para el usuario no es de relevancia cómo está implementado el sistema, solamente cómo funciona. Los cuadros se le explicará que están modelados en 3D para que la experiencia sea aún más inmersiva, puesto que así se podrán apreciar los trazos y se podrán hacer explicaciones más detalladas mientras que el usuario explora los lienzos disponibles. En cuanto a las estatuas tienen un nivel de detalle tal, que son apreciables al igual las incisiones de los cinceles y se podrá detallar más aún la explicación.
+
+Tras esta demostración el usuario estará listo para entrar a la sala o salas en las que se distribuye la exposición. En las salas el usuario andará libremente buscando imágenes con marcas en las paredes y sobre el suelo, para una mejor visualización habrá unas marcas con unos pies en el suelo indicando dónde debería situarse el mismo para visualizar la escena de forma óptima.
+
+Para la interacción con los cuadros simplemente deberá mirar hacia las marcas que se encuentran en la pared, tras mirar a ellas se transformarán para él en cuadros que podrá observar desde todos los ángulos que quiera. El cuadro permite que el usuario se acerque cuanto quiera, no como en las pinacotecas tradicionales por el riesgo que esto entraña para la obra en caso de tocarla o tirarla. Al poder acercarse el usuario verá los trazos presentes en el lienzo así como los matices de colores y texturas presentes en el mismo. El usuario tendrá dos formas de cambiar entre los cuadros que quiera visualizar: o bien desplazarse por el edificio en busca de las marcas o si el museo no dispone de espacio para esta solución la transición entre cuadros se realizará sobre la misma marca en la pared mediante la interacción del usuario. Esta interacción anteriormente descrita ha de ser lo más intuitiva para el usuario por lo que se realizará simplemente mirando a un botón de 'siguiente', el cuál hará cambiar el cuadro.
+
+Las exposiciones de cuadros pueden ser dinámicas, incorporando un asistente por voz que acompañará al visitante por el museo como un modelo 3D que visualizará a su lado. Cuando un usuario se para delante de un cuadro, el modelo 3D del asistente se coloca al lado del cuadro esperando las preguntas del visitante. La interacción con el asistente se activa cuando el usuario dirige su mirada hacia el modelo 3D del mismo, de esta forma para el visitante la conversación se inicia igual que cuando conversa con una persona. El asistente soporta todo tipo de preguntas: preguntas sobre el edificio (dónde están los baños, donde está la cafetería, medidas de seguridad del edificio, etc), preguntas sobre el propio asistente (cómo se usa, qué preguntas puede responder, recomendaciones de cuadros,  etc), preguntas sobre las obras o preguntas sobre los propios autores de los cuadros. El asistente tomará como modelo 3D el del autor que corresponda a la exposición, es decir, el asistente sería por ejemplo Velázquez, Goya, Murillo o cualquier autor del que se quiera realizar una exposición. Haciendo esto las preguntas sobre el cuadro o el propio autor tienen un carácter más natural, puesto que para el visitante será el propio autor el que responda preguntas sobre él mismo o sobre sus lienzos.
+
+No sólo se pueden ver cuadros en las exposiciones, si no que se incluye la posibilidad de tener exposiciones con esculturas, edificios y otro tipo de elementos tales como vasijas, ornamentación, enseres, armas, ...
+
+Este funcionamiento es muy similar para el usuario al explicado con los cuadros. Esta vez las marcas que debe de buscar estarán situadas en el suelo y sólo con mirarlas los modelos tridimensionales aparecerán para el visitante sobre dicha marca. La interacción con el modelo es muy natural al usuario puesto que para ver los laterales de la estatua lo único que tiene que hacer es ir dándole la vuelta igual que lo haría en un museo tradicional. A parte de esta interacción básica con el modelo el usuario podrá, a través de un dispositivo que se incorpora en las gafas, interactuar con las estatuas mediante gestos. De esta forma no tiene necesidad de moverse para poder ver las obras desde todos los puntos de vista posibles. Queremos que la experiencia de usuario sea lo más agradable posible con lo que el modelo es fácilmente manipulable para el usuario mediante gestos que le serán explicados al inicio de la visita y de los que podrá solicitar explicación siempre que la requiera durante la misma tanto al asistente de voz como en los menús que se le presentan en las gafas de realidad virtual.
+
+Para concretar esta última idea, lo que el usuario necesitaría para interactuar con el modelo sería únicamente posicionarse delante de el y mover la mano para desplazar el modelo. Las opciones que se le dan al usuario incluyen la rotación horizontal de la figura, una visión cenital, aplicarle zoom o interactuar con ella y con los objetos de la escena cogiéndolos y moviéndolos.
+
+El usuario no sólo podrá interactuar con los edificios en 3D al igual que lo hace con las estatuas rotándolas y viéndolas desde fuera, si no que, mediante gestos, será capaz de moverse con sus gafas y manos por el interior del edificio visitando las salas, habitaciones y recovecos del mismo. Imaginemos por ejemplo esta funcionalidad con la Catedral de Granada. Nos permitiría verla desde fuera en todas las posibles orientaciones y, además, poder visitar el interior apreciando los detalles de las bóvedas, el altar o el púlpito de la misma. La riqueza que este modelo aporta al usuario hace que pueda obtener tanta información como si estuviera visitando físicamente el museo, puesto que la interacción con el modelo sigue siendo en realidad aumentada con lo que si despaza su cabeza dentro del edificio sentirá como si lo estuviera viendo por dentro. Los elementos reseñables del edificio, es decir, las zonas explicadas normalmente por una guía turística son destacadas añadiendo un brillo a esa zona en el modelo y permitiendo que el usuario pregunte al asistente en cualquier momento sobre los puntos de interés que tiene en su rango de visión.
+
+Para enriquecer aún más la experiencia del usuario con los cuadros también se incorpora un modo de inmersión en el entorno del mismo haciendo que, cuando el usuario lo seleccione, el cuadro cobre forma de entorno 3D situando al visitante dentro del mismo. Este concepto no es comparable a nada que se haya realizado hasta la fecha, ya que no sólo provee al usuario de una visión del cuadro si no de una interacción tridimensional más allá de la percepción de los trazos y texturas. Imaginemos por ejemplo el cuadro de Goya de los Fusilamientos del 2 de Mayo. Si el usuario seleccionase la interacción tridimensional con este cuadro se encontraría en un entorno en el que vería los personajes como modelos 3D, al fusilado y a los soldados del ejército francés así como la montaña y el paisaje en general que rodea la escena. No podemos decir únicamente que esta interacción es natural para el visitante puesto que representa un paso más alla y aporta un interés extra a la observación del cuadro sin alterar.
+
+\section{Experiencia desde el punto de vista del museo}
+El hecho de realizar este tipo de visitas en vez de diseñar un museo tradicional supone una serie de ventajas enorme para los organizadores del mismo. En primer lugar, no se necesita traer las estatuas o los lienzos reales, los cuales no siempre están disponibles ya que los mantienen las grandes pinacotecas. Además, la inversión de dinero es mucho menor ya que no se requiere un gran espacio ni una protección de alta seguridad para garantizar la integridad de las obras. A diferencia de las exposiciones tradicionales, las exposiciones virtuales son fácilmente ampliables simplemente comprando los modelos escaneados en 3D tanto de los cuadros como de las estatuas o edificios que se quieran exponer.
+
+Queremos que este sistema no sólo suponga beneficios y mejoras desde el punto de vista del usuario, si no que para el museo sea también la mejor opción. El mantenimiento de este tipo de instalaciones es mínimo puesto que la aplicación es mantenida de forma externa por nuestro equipo de desarrolladores y alojada en Google Play para su instalación. El museo debe de tener únicamente los dispositivos móviles que se le van a ceder al visitante así como las gafas de realidad virtual y el Leap Motion que las mismas incorporan. Este conjunto total puede suponer un desembolso inicial alto pero debemos pensar que esta inversión no requiere más mantenimiento y se rentabiliza fácilmente.
+
+La integración de la experiencia del usuario puede realizarse o bien mediante los postes a los que el usuario acerca el dispositivo o bien simplemente cambiando de habitación. Estas opciones dejan abierto el uso de la aplicación en espacios que dispongan una sola habitación para alojar varias exposiciones o su uso para museos con varias habitaciones. Asimismo, la disposición de los cuadros y estatuas por el museo se puede cambiar simplemente moviendo las marcas sobre las que se muestran los mismos, esto supone simplemente descolgar dichas marcas y moverlas donde se desee pero no se requiere un trato especial al no estar moviendo obras originales de gran valor.
+
+Generalmente, los museos con un espacio limitado no pueden albergar más de una o dos exposiciones simultáneamente pero con esta idea de museo virtual el número de exposiciones no tiene más límite que la idea que tenga el director del museo. Además este concepto no sólo es bueno para los visitantes o la compañía, si no que representa una oportunidad para que la cultura se acerque a la sociedad de forma más sencilla. Por ejemplo, muchas personas no pueden permitirse un viaje al Louvre o al Museo del Prado para poder ver los cuadros más relevantes puesto que no sólo tienen que comprar las entradas, si no el viaje y la estancia en otras ciudades que no son las suyas de residencia. Con este modelo de museo no tenemos esta limitación pues todas las ciudades podrían tener implementado el museo virtual concediendo a la población la oportunidad de admirar los cuadros más importantes a nivel mundial.
+
+\end{document}
