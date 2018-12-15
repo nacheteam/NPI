@@ -2,3 +2,4 @@
 \contentsline {section}{\numberline {1}Idea, dispositivo y plataforma de desarrollo}{3}{section.1}
 \contentsline {section}{\numberline {2}Proyecto}{3}{section.2}
 \contentsline {section}{\numberline {3}Estructura de la escena}{4}{section.3}
+\contentsline {section}{\numberline {4}Gestos}{6}{section.4}
