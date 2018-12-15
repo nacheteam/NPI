@@ -102,6 +102,66 @@ El proyecto nos muestra nuestras manos reconocidas por el Leap Motion para poder
 
 A continuación vamos a detallar más la estructura general de la escena para poder entrar posteriormente más en profundidad en cada modo y los gestos desarrollados.
 
+\section{Estructura de la escena}
 
+Para comenzar vamos a visualizar un esquema de los nodos principales de la escena:
+
+\begin{figure}[!h]
+	\includegraphics[scale=0.8]{./Imagenes/Escena.png}
+	\caption{Diagrama de la escena principal}
+	\label{escena}
+\end{figure}
+
+Como podemos observar la escena contiene 9 elementos en total que vamos a explicar a continuación:
+
+\begin{itemize}
+	\item InteractionCube, FarPoint, Terrain y David: estos elementos son los que componen el modelo tridimensional del David de Miguel Ángel (estatua que se muestra en nuestra aplicación). Este conjunto hace que tengamos una hitbox con la que interactuar con el modelo así como un terreno para prevenir de que desaparezca de la escena. Este último elemento es empleado cuando activamos el Play Mode ya que las figuras de la escena ganan propiedades de físicas con lo que podemos interactuar con ellos y para lo que necesitamos un plano inferior que nos haga de suelo para que la gravedad no se lleve los elementos hacia abajo indefinidamente.
+	\item Directional Light: este elemento de la escena nos da la forma en la que la luz se aplica sobre la escena. Es el objeto que provee de una fuente de luz a la misma.
+	\item Leap Rig: este elemento de la escena es el que contiene la funcionalidad y las características del Leap Motion así como la recopilación de los datos del mismo para que posteriormente se puedan utilizar en nuestro script de detección de gestos. Viene incorporado en el Asset provisto por los desarrolladores de Leap Motion Inc. para Unity.
+	\item Cube UI Buttons: este elemento incorpora los botones con los que se puede interactuar mediante las manos virtuales de las que nos provee el SDK de Leap Motion.
+	\item Canvas: en este nodo del gafo de la escena tenemos los textos que se incorporan en los botones para poder distinguirlos entre sí de forma visual.
+\end{itemize}
+
+No sólo tenemos estos elementos dentro de la escena, si no que también hay algunos nodos que contienen subnodos relevantes en el desarrollo del proyecto y de los cuales haremos una breve explicación para exponer su utilidad dentro del mismo.
+
+\vspace{10px}
+
+En primer lugar explicaremos el árbol que obtenemos del nodo Leap Rig:
+
+\begin{figure}[!h]
+	\includegraphics[scale=0.75]{./Imagenes/Leap_Rig.png}
+	\caption{Diagrama del nodo Leap Rig}
+	\label{leapRig}
+\end{figure}
+
+\begin{itemize}
+	\item Main Camera y Camera Point: estos elementos representan la cámara de la escena, esto es, dónde estará por defecto el usuario y que le permitirá cambiar el foco de atención a diferentes zonas de la misma si lo requiere. Sobre estos elementos de la escena es sobre los que se coloca el script Rotation.cs que es el que contiene el código referente a los gestos implementados y que posteriormente explicaremos.
+	\item Hand Models: Estos elementos son los que implementan el modelo tridimensional de las manos que interactúa y se mueve con respecto a las nuestras mediante el dispositivo Leap Motion. Gracias a estos modelos la experiencia del usuario es mucho más fácil ya que así tiene una percepción real de dónde están sus manos virtuales en la escena.
+	\item Interaction Manager: Este componente contiene el procesamiento de la información de las manos mediante el Leap e integra la compatibilidad con VR para Oculus y HTC Vive. Dentro de este objeto tenemos un interactuador para cada mano que recoge la información sobre cada dedo (si está o no extendido), sobre la velocidad de cada mano y sobre el vector de dirección y el vector normal de la palma de la mano. Esta información será accedida posteriormente para la elaboración de los gestos.
+\end{itemize}
+
+\vspace{20px}
+
+También tenemos elementos en el nodo Cube UI Buttons los cuales son los propios botones para cada opción.
+
+\begin{figure}[!h]
+	\includegraphics[scale=0.8]{./Imagenes/Cube_UI_Buttons.png}
+	\caption{Diagrama de Cube UI Buttons}
+	\label{cubeUIButtons}
+\end{figure}
+
+Cada uno de estos botones contiene un objeto de tipo Button Cube que son los botones con los que Leap puede interactuar presionándolos y que vienen incluidos en el Asset de Leap Motion.
+
+\vspace{10px}
+
+Asimismo tenemos que del nodo Canvas cuelgan los textos que se superponen sobre los botones.
+
+\begin{figure}[!h]
+	\includegraphics[scale=0.7]{./Imagenes/Canvas.png}
+	\caption{Diagrama del nodo Canvas}
+	\label{canvas}
+\end{figure}
+
+Estos textos se enlazan al botón correspondiente del nodo Cube UI Buttons.
 
 \end{document}
