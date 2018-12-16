@@ -243,4 +243,31 @@ Como podemos observar en este caso tenemos que comprobar la orientación de la p
 
 Si el vector normal de la palma apunta hacia la derecha entonces giramos en sentido horario, esto sería inclinar la mano a la izquierda. De forma análoga si el vector normal apunta hacia la izquierda es porque estamos inclinando la mano a la derecha y por tanto giramos en sentido antihorario. La rotación se hace a velocidad constante y al igual que en el gesto anterior sólo lo hacemos cuando la mano detectada es la mano derecha, por lo que controlamos dicho evento.
 
+\subsection{Rotación con respecto al eje X}
+
+Para proseguir hemos implementado también una rotación entorno al eje X para poder visualizar la estatua por arriba y por abajo. Tenemos que tener en cuenta que esta rotación no es completa, es decir, no giramos la estatua 360 grados entorno al eje X ya que hemos considerado que lo más práctico es poder obtener una vista cenital y el resto de los ángulos se pueden apreciar rotando la figura con el gesto anterior. Este gesto se realiza inclinando la mano hacia abajo o arriba tal y como se muestra en la siguiente imagen:
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/normal.jpg}
+		\caption{Mano sin inclinar}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/vista_desde_arriba.jpg}
+		\caption{Mano hacia abajo}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/vista_desde_abajo.jpg}
+		\caption{Mano hacia arriba}
+	\end{subfigure}
+	\caption{Gesto para rotar la figura entorno al eje Y}
+	\label{gesto3}
+\end{figure}
+
+La implementación de este gesto recae, al igual que en el anterior, en el control del vector normal de la palma. Si antes comprobábamos que la componente X del vector normal estuviera en un rango concreto ahora es la componente Y la que nos interesa. El valor de esta componente del vector normal tiene que estar en el intervalo $(-0.3 \ , \ 0.3)$ ya que es el que hemos comprobado que mejor nos funciona. Una vez comprobado esto la estatua se rota entorno al eje X de forma proporcional a la componente X del vector normal. Lo que obtenemos con esto es que la figura no rote indefinidamente, si no que rote únicamente hasta que obtengamos la vista superior e inferior de la misma previniendo un giro libre del modelo. 
+
 \end{document}
