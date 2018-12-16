@@ -3,3 +3,4 @@
 \contentsline {section}{\numberline {2}Proyecto}{3}{section.2}
 \contentsline {section}{\numberline {3}Estructura de la escena}{4}{section.3}
 \contentsline {section}{\numberline {4}Gestos}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Traer la estatua a primer plano}{7}{subsection.4.1}
