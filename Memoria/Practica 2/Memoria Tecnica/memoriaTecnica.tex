@@ -166,5 +166,22 @@ Estos textos se enlazan al botón correspondiente del nodo Cube UI Buttons.
 
 \section{Gestos}
 
+Para poder realizar la implementación de los gestos primero tenemos que comprender qué información obtenemos del dispositivo Leap Motion y cómo se almacena la misma. 
+
+\vspace{10px}
+
+Para debemos inicializar un elemento de tipo Controller del que obtendremos un objeto de tipo Frame llamando al método `\textbf{Frame()}'. Este objeto es el que contiene toda la información que el dispositivo recopila de las manos.
+
+\vspace{10px}
+
+Las manos se guardan en un elemento de tipo `\textbf{List<Hands>}' por orden de detección del dispositivo, esto es, no tenemos la certeza de que la primera mano que tenemos en el vector de manos sea la izquierda o la derecha. Para consultar esta información tenemos el método `\textbf{hand.IsRight()}' o `\textbf{hand.IsLeft()}' los cuales nos dan la información sobre qué mano es la que tenemos en escena. Además podemos obtener más información de la mano pero nosotros sólo hemos empleado dos datos más. El primero de ellos es la velocidad de movimiento de la palma de la mano que es obtenida accediendo al atributo `\textbf{hand.PalmVelocity}'. Con esto podemos saber si nos estamos moviendo más o menos rápido. Además podemos obtener la dirección en la que estamos moviendo la mano con el último dato que hemos necesitado en nuestro proyecto que es el vector normal a la palma de la mano. Este dato lo obtenemos mediante el atributo `\textbf{hand.PalmNormal}'.
+
+\vspace{10px}
+
+Además de la información genérica sobre la mano tenemos un vector con cada dedo detectado por el Leap Motion. Para acceder a esta lista de dedos lo haremos mediante el atributo `\textbf{hand.Fingers}' en la cual tendremos 5 posiciones, una para cada dedo. De cada uno de estos dedos hemos obtenido dos tipos de datos. El primero de ellos es información sobre si está o no extendido. Para poder obtener dicho dato lo debemos hacer accediendo al atributo `\textbf{finger.IsExtended}' que nos devolverá verdadero si el dedo está extendido y falso si no lo está. Además hemos obtenido la posición de cada dedo como vector tridimensional. Para acceder a dicho dato lo hacemos mediante el atributo `\textbf{finger.TipPosition}'.
+
+\vspace{10px}
+
+Tras haber comentado cómo hemos obtenido cada dato sobre la mano y los dedos pasamos a realizar una explicación de los gestos implementados.
 
 \end{document}
