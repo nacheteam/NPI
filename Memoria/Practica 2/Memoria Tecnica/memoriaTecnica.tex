@@ -172,15 +172,15 @@ Para poder realizar la implementación de los gestos primero tenemos que compren
 
 \vspace{10px}
 
-Para debemos inicializar un elemento de tipo Controller del que obtendremos un objeto de tipo Frame llamando al método `\textbf{Frame()}'. Este objeto es el que contiene toda la información que el dispositivo recopila de las manos.
+Para empezar debemos inicializar un elemento de tipo Controller del que obtendremos un objeto de tipo Frame llamando al método `\textbf{Frame()}'. Este objeto es el que contiene toda la información que el dispositivo recopila de las manos.
 
 \vspace{10px}
 
-Las manos se guardan en un elemento de tipo `\textbf{List<Hands>}' por orden de detección del dispositivo, esto es, no tenemos la certeza de que la primera mano que tenemos en el vector de manos sea la izquierda o la derecha. Para consultar esta información tenemos el método `\textbf{hand.IsRight()}' o `\textbf{hand.IsLeft()}' los cuales nos dan la información sobre qué mano es la que tenemos en escena. Además podemos obtener más información de la mano pero nosotros sólo hemos empleado dos datos más. El primero de ellos es la velocidad de movimiento de la palma de la mano que es obtenida accediendo al atributo `\textbf{hand.PalmVelocity}'. Con esto podemos saber si nos estamos moviendo más o menos rápido. Además podemos obtener la dirección en la que estamos moviendo la mano con el último dato que hemos necesitado en nuestro proyecto que es el vector normal a la palma de la mano. Este dato lo obtenemos mediante el atributo `\textbf{hand.PalmNormal}'.
+Las manos se guardan en un elemento de tipo `\textbf{List<Hands>}' por orden de detección del dispositivo, esto es, no tenemos la certeza de que la primera mano que tenemos en el vector de manos sea la izquierda o la derecha. Para consultar esta información tenemos el método `\textbf{hand.IsRight()}' o `\textbf{hand.IsLeft()}' los cuales nos dan la información sobre qué mano es la que tenemos en escena. Además podemos obtener más información de la mano pero nosotros sólo hemos empleado dos datos más. El primero de ellos es la velocidad de movimiento de la palma de la mano que es obtenida accediendo al atributo `\textbf{hand.PalmVelocity}'. Con esto podemos saber si nos estamos moviendo más o menos rápido. Además podemos obtener la dirección en la que estamos moviendo la mano con el último dato que hemos necesitado en nuestro proyecto, que es el vector normal a la palma de la mano. Este dato lo obtenemos mediante el atributo `\textbf{hand.PalmNormal}'.
 
 \vspace{10px}
 
-Además de la información genérica sobre la mano tenemos un vector con cada dedo detectado por el Leap Motion. Para acceder a esta lista de dedos lo haremos mediante el atributo `\textbf{hand.Fingers}' en la cual tendremos 5 posiciones, una para cada dedo. De cada uno de estos dedos hemos obtenido dos tipos de datos. El primero de ellos es información sobre si está o no extendido. Para poder obtener dicho dato lo debemos hacer accediendo al atributo `\textbf{finger.IsExtended}' que nos devolverá verdadero si el dedo está extendido y falso si no lo está. Además hemos obtenido la posición de cada dedo como vector tridimensional. Para acceder a dicho dato lo hacemos mediante el atributo `\textbf{finger.TipPosition}'.
+Además de la información genérica sobre la mano tenemos un vector con cada dedo detectado por el Leap Motion. Para acceder a esta lista de dedos lo haremos mediante el atributo `\textbf{hand.Fingers}' en la cual tendremos 5 posiciones, una para cada dedo. De cada uno de estos dedos hemos obtenido dos tipos de datos. El primero de ellos es información sobre si está o no extendido. Para poder obtener dicho dato lo debemos hacer accediendo al atributo `\textbf{finger.IsExtended}' que nos devolverá verdadero si el dedo está extendido y falso si no lo está. Además, hemos obtenido la posición de la yema de cada dedo como vector tridimensional. Para acceder a dicho dato lo hacemos mediante el atributo `\textbf{finger.TipPosition}'.
 
 \vspace{10px}
 
@@ -188,7 +188,7 @@ Tras haber comentado cómo hemos obtenido cada dato sobre la mano y los dedos pa
 
 \subsection{Traer la estatua a primer plano}
 
-Lo primero que tenemos que hacer es traer la estatua a primer plano de la escena ya que por defecto al entrar en el modo Observation Mode veremos que nos aparece muy alejada de nosotros y no podemos interactuar con ella adecuadamente. Para acercarla tendremos que realizar un gesto que consiste en tener la mano derecha extendida y contraer los dedos de la siguiente forma:
+Lo primero que tenemos que hacer es traer la estatua a primer plano de la escena ya que por defecto, al entrar en el modo Observation Mode, veremos que no nos aparece el modelo 3D. Para hacerla aparecer tendremos que realizar un gesto que consiste en tener la mano derecha extendida y contraer los dedos de la siguiente forma:
 
 \begin{figure}[!h]
 	\centering
@@ -293,5 +293,30 @@ La idea de este gesto es que podemos acercarnos la imagen si alejamos los dedos 
 \vspace{10px}
 
 Para la implementación de este gesto tenemos que hacer varias comprobaciones. Para empezar en este caso necesitamos tener dos manos en escena, de forma que tenemos que comprobar que el vector de manos tenga dos elementos. Además tenemos que comprobar que el dedo corazón, anular y meñique están contraídos en ambas manos y el índice y pulgar están extendidos (hemos comprobado que el comportamiento del dedo pulgar es un tanto irregular cuando es detectado por el Leap Motion por lo que esta condición teórica se traduce en la implementación a que únicamente el índice esté extendido). Además debemos controlar la distancia entre los dedos índices de ambas manos para comprobar si entre la iteración anterior y la actual se han alejado o acercado los mismos. Si los dedos se están acercando entonces la estatua se alejará de forma proporcional a la velocidad de ambas palmas y si lo dedos se están acercando la figura se acercará de forma análoga.
+
+\subsection{Salir al menú principal}
+
+Por último tenemos que proveer al usuario de un gesto que le permita volver al menú inicial para que pueda continuar explorando las opciones de la aplicación. Asimismo debemos tener en cuenta que el gesto ha de ser suficientemente distinto del resto de gestos como para que no lo confundamos con ningún otro. Es por esto que hemos elegido que el gesto que devuelva al usuario al menú inicial sea juntar los dos meñiques con el resto de dedos contraídos:
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[scale=0.07]{./Imagenes/vuelve_atras.jpg}
+	\caption{Manos contraídas y los meñiques tocándose}
+	\label{gesto5}
+\end{figure}
+
+Para la implementación de este gesto tenemos que comprobar que ningún dedo esté extendido menos el meñique (en la implementación excluimos el pulgar como ya hemos explicado). Además debemos comprobar que estos dos dedos se están tocando, lo cual traducido a la implementación significa que la distancia de las yemas de los dedos de los mismos sea menor que una constante prefijada. No podemos implementar esta condición como una igualdad, puesto que desde el punto de vista práctico esta no se produciría nunca y por tanto el gesto no sería válido. Si esta condición se cumple, entonces volvemos a la escena del menú para escoger las diferentes opciones.
+
+\section{Conclusiones}
+
+Para recopilar las ideas de esta memoria técnica hemos empleado la estructura de datos que nos provee Leap Rig contenido en el Asset de Unity desarrollado por el equipo de Leap Motion Inc. Esta estructura de datos contiene información sobre el número de manos, información sobre las manos y sobre cada uno de los dedos que hemos empleado de forma conveniente para elaborar los gestos. Además cabe decir que todo lo implementado está en la función `\textbf{Update()}' para poder actualizar la información de los gestos en cada instante. Toda esta implementación se encuentra en el script Rotation.cs que se encuentra en `Assets/My-Scripts/Rotation.cs'.
+
+\vspace{10px}
+
+En nuestra experiencia con el dispositivo hemos comprobado que la detección de los dedos y manos en algunas ocasiones no es del todo precisa teniendo problemas sobre todo con el pulgar. Además se recomienda que no tengamos elementos tales como anillos o pulseras en las manos puesto que si no, la detección es mucho más pobre y falla con más frecuencia.
+
+\vspace{10px}
+
+Por último todo el equipo estamos de acuerdo en el gran potencial que presenta el dispositivo Leap Motion y sobre todo creemos que la revolución llegará cuando la integración con realidad virtual sea total y haya un SDK que permita la comunicación con dispositivos Android, es decir, cuando podamos enchufar Leap directamente a un Smartphone Android o conectarlo mediante Bluetooth. 
 
 \end{document}
