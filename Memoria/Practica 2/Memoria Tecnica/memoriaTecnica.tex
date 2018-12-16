@@ -208,4 +208,12 @@ Lo primero que tenemos que hacer es traer la estatua a primer plano de la escena
 
 Este gesto requiere controlar si todos los dedos estaban o no contraídos en el instante anterior. Para esto hemos controlado el evento mediante un booleano que se actualiza en cada instante mediante la función `\textbf{Update()}'. Para ello comprobamos si los dedos están extendidos mediante el atributo anteriormente mencionado y actualizamos el valor en el último momento del método `\textbf{Update()}'. Antes de esta actualización comprobamos si los dedos estaban en el instante anterior extendidos o contraídos y su estado actual con lo que podemos saber si estamos abriendo y cerrando la mano y por tanto haciendo el gesto.
 
+\vspace{10px}
+
+Cabe decir además que este gesto es únicamente hecho con la mano derecha, por lo que debemos controlar también que la única mano que es detectada por el Leap Motion sea la que nosotros queremos mediante el atributo `\textbf{hand.IsRight}'.
+
+
+
+
+
 \end{document}
