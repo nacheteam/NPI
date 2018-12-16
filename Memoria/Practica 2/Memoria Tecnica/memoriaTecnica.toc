@@ -1,0 +1,9 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Idea, dispositivo y plataforma de desarrollo}{3}{section.1}
+\contentsline {section}{\numberline {2}Proyecto}{3}{section.2}
+\contentsline {section}{\numberline {3}Estructura de la escena}{4}{section.3}
+\contentsline {section}{\numberline {4}Gestos}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Traer la estatua a primer plano}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Rotaci\IeC {\'o}n con respecto al eje Y}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Rotaci\IeC {\'o}n con respecto al eje X}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Zoom}{9}{subsection.4.4}

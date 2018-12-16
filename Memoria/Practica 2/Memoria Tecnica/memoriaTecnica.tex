@@ -270,4 +270,28 @@ Para proseguir hemos implementado también una rotación entorno al eje X para p
 
 La implementación de este gesto recae, al igual que en el anterior, en el control del vector normal de la palma. Si antes comprobábamos que la componente X del vector normal estuviera en un rango concreto ahora es la componente Y la que nos interesa. El valor de esta componente del vector normal tiene que estar en el intervalo $(-0.3 \ , \ 0.3)$ ya que es el que hemos comprobado que mejor nos funciona. Una vez comprobado esto la estatua se rota entorno al eje X de forma proporcional a la componente X del vector normal. Lo que obtenemos con esto es que la figura no rote indefinidamente, si no que rote únicamente hasta que obtengamos la vista superior e inferior de la misma previniendo un giro libre del modelo. 
 
+\subsection{Zoom}
+
+Es conveniente para este tipo de aplicaciones tener también una opción de zoom para poder ampliar y ver mejor los detalles. Además cabe recordar que nuestra aplicación no sólo está pensada para modelos como estatuas, si no también para edificios en los que será conveniente tener la opción de poder visualizarlo por dentro gracias al zoom. Este gesto se realiza igual que cuando simulamos tener una cámara en nuestras manos, veamoslo en la siguiente imagen:
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{./Imagenes/zoom1.jpg}
+	\end{subfigure}
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{./Imagenes/zoom2.jpg}
+	\end{subfigure}
+	\caption{Gesto para aplicar zoom a la figura}
+	\label{gesto4}
+\end{figure}
+
+La idea de este gesto es que podemos acercarnos la imagen si alejamos los dedos entre sí o alejarnos de la misma si los acercamos.
+
+\vspace{10px}
+
+Para la implementación de este gesto tenemos que hacer varias comprobaciones. Para empezar en este caso necesitamos tener dos manos en escena, de forma que tenemos que comprobar que el vector de manos tenga dos elementos. Además tenemos que comprobar que el dedo corazón, anular y meñique están contraídos en ambas manos y el índice y pulgar están extendidos (hemos comprobado que el comportamiento del dedo pulgar es un tanto irregular cuando es detectado por el Leap Motion por lo que esta condición teórica se traduce en la implementación a que únicamente el índice esté extendido). Además debemos controlar la distancia entre los dedos índices de ambas manos para comprobar si entre la iteración anterior y la actual se han alejado o acercado los mismos. Si los dedos se están acercando entonces la estatua se alejará de forma proporcional a la velocidad de ambas palmas y si lo dedos se están acercando la figura se acercará de forma análoga.
+
 \end{document}
