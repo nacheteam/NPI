@@ -212,8 +212,35 @@ Este gesto requiere controlar si todos los dedos estaban o no contraídos en el 
 
 Cabe decir además que este gesto es únicamente hecho con la mano derecha, por lo que debemos controlar también que la única mano que es detectada por el Leap Motion sea la que nosotros queremos mediante el atributo `\textbf{hand.IsRight}'.
 
+\subsection{Rotación con respecto al eje Y}
 
+Esta acción involucra dos gestos opuestos para poder realizar la acción. El objetivo de este gesto es que la estatua gire en sentido horario o antihorario entorno al eje Y para poder ver todos los perfiles de la misma. El gesto consiste en inclinar la mano hacia un lado u otro para girar la estatua en un sentido o el opuesto. Veamoslo en una imagen:
 
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.32\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/normal.jpg}
+		\caption{Mano sin inclinar}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/rota_horario.jpg}
+		\caption{Mano hacia a la izquierda}
+	\end{subfigure}
+	\begin{subfigure}{0.33\textwidth}
+		\centering
+		\includegraphics[scale=0.044]{./Imagenes/rota_antihorario.jpg}
+		\caption{Mano hacia a la derecha}
+	\end{subfigure}
+	\caption{Gesto para rotar la figura entorno al eje Y}
+	\label{gesto2}
+\end{figure}
 
+Como podemos observar en este caso tenemos que comprobar la orientación de la palma de la mano para controlar este movimiento. Para poder hacer esto primero tomamos el vector normal de la palma mediante el atributo `\textbf{hand.PalmNormal}' y lo convertimos a un vector tridimensional. El umbral que hemos detectado que funciona mejor para este gesto es aquel que tiene la componente X del vector normal con valores en el intervalo $(-0.3 \ , \ 0.6)$.
+
+\vspace{10px}
+
+Si el vector normal de la palma apunta hacia la derecha entonces giramos en sentido horario, esto sería inclinar la mano a la izquierda. De forma análoga si el vector normal apunta hacia la izquierda es porque estamos inclinando la mano a la derecha y por tanto giramos en sentido antihorario. La rotación se hace a velocidad constante y al igual que en el gesto anterior sólo lo hacemos cuando la mano detectada es la mano derecha, por lo que controlamos dicho evento.
 
 \end{document}

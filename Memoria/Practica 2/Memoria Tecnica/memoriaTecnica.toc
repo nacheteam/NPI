@@ -4,3 +4,4 @@
 \contentsline {section}{\numberline {3}Estructura de la escena}{4}{section.3}
 \contentsline {section}{\numberline {4}Gestos}{6}{section.4}
 \contentsline {subsection}{\numberline {4.1}Traer la estatua a primer plano}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Rotaci\IeC {\'o}n con respecto al eje Y}{8}{subsection.4.2}
